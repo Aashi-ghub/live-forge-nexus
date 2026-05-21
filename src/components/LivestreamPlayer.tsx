@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { getEmbedUrl } from "@/lib/utils";
 
 export function LivestreamPlayer({ embedUrl }: { embedUrl: string | null }) {
+  const finalEmbedUrl = getEmbedUrl(embedUrl);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -13,9 +16,9 @@ export function LivestreamPlayer({ embedUrl }: { embedUrl: string | null }) {
         style={{ boxShadow: "var(--shadow-glow)" }}
       >
         <div className="aspect-video w-full">
-          {embedUrl ? (
+          {finalEmbedUrl ? (
             <iframe
-              src={embedUrl}
+              src={finalEmbedUrl}
               title="E-Cell CGC Livestream"
               className="h-full w-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

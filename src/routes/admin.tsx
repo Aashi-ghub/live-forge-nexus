@@ -5,6 +5,8 @@ import { supabase } from "@/integrations/supabase/client";
 import type { Session } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { Check, Search, Trash2, X, Radio, LogOut } from "lucide-react";
+import { getEmbedUrl } from "@/lib/utils";
+
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -221,14 +223,19 @@ function AdminDashboard({ email }: { email: string }) {
     if (error) toast.error(error.message);
   }
   async function saveUrl() {
+    const formattedUrl = getEmbedUrl(embedUrl) || "";
     setSavingUrl(true);
     const { error } = await supabase
       .from("livestream_config")
-      .update({ embed_url: embedUrl, updated_at: new Date().toISOString() })
+      .update({ embed_url: formattedUrl, updated_at: new Date().toISOString() })
       .eq("id", 1);
     setSavingUrl(false);
-    if (error) toast.error(error.message);
-    else toast.success("Stream URL updated");
+    if (error) {
+      toast.error(error.message);
+    } else {
+      setEmbedUrl(formattedUrl);
+      toast.success("Stream URL updated");
+    }
   }
 
   const filtered = regs.filter(
