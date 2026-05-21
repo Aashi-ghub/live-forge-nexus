@@ -21,7 +21,7 @@ export function LivestreamPlayer({ embedUrl }: { embedUrl: string | null }) {
               src={finalEmbedUrl}
               title="E-Cell CGC Livestream"
               className="h-full w-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
               allowFullScreen
             />
           ) : (
