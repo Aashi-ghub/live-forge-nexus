@@ -7,7 +7,15 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getEmbedUrl(url: string | null | undefined): string | null {
   if (!url) return null;
-  const trimmed = url.trim();
+  let trimmed = url.trim();
+
+  // If the user pasted an iframe tag, extract the src attribute
+  if (trimmed.toLowerCase().includes("<iframe")) {
+    const srcMatch = trimmed.match(/src=["']([^"']+)["']/i);
+    if (srcMatch && srcMatch[1]) {
+      trimmed = srcMatch[1];
+    }
+  }
 
   // YouTube links
   if (trimmed.includes("youtube.com") || trimmed.includes("youtu.be")) {
