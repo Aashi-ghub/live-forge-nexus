@@ -172,7 +172,7 @@ function LivestreamPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="grid gap-6 lg:grid-cols-3"
+              className="grid gap-6 lg:grid-cols-3 lg:items-stretch"
             >
               <div className="lg:col-span-2">
                 <LivestreamPlayer embedUrl={embedUrl} />
@@ -191,7 +191,7 @@ function LivestreamPage() {
                   </button>
                 </div>
               </div>
-              <div className="lg:col-span-1">
+              <div className="lg:col-span-1 flex flex-col">
                 <QAPanel name={reg.name} email={reg.email} />
               </div>
             </motion.div>

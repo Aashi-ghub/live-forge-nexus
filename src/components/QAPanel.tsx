@@ -69,7 +69,7 @@ export function QAPanel({ name, email }: { name: string; email: string }) {
   }
 
   return (
-    <div className="glass-strong flex h-[520px] flex-col rounded-3xl">
+    <div className="glass-strong flex h-[500px] lg:h-full flex-col rounded-3xl">
       <div className="flex items-center justify-between border-b border-border/60 px-5 py-4">
         <div>
           <h3 className="font-display text-base font-semibold">Live Q&amp;A</h3>
