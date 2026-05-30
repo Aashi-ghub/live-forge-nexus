@@ -33,6 +33,7 @@ export function RegistrationForm({ onSubmitted }: { onSubmitted: (email: string)
       return;
     }
     localStorage.setItem("ecell_email", normalizedEmail);
+    localStorage.setItem("ecell_name", parsed.data.name);
     onSubmitted(normalizedEmail);
   }
 
@@ -44,10 +45,8 @@ export function RegistrationForm({ onSubmitted }: { onSubmitted: (email: string)
       transition={{ duration: 0.6, delay: 0.2 }}
       className="glass-strong mx-auto w-full max-w-md rounded-3xl p-6 sm:p-8"
     >
-      <h2 className="font-display text-2xl font-semibold">Request access</h2>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Drop your details — admin will let you in.
-      </p>
+      <h2 className="font-display text-2xl font-semibold">Join the session</h2>
+      <p className="mt-1 text-sm text-muted-foreground">Enter your name and email to continue.</p>
 
       <div className="mt-6 space-y-4">
         <div>
@@ -77,11 +76,9 @@ export function RegistrationForm({ onSubmitted }: { onSubmitted: (email: string)
         className="group relative mt-6 w-full overflow-hidden rounded-xl px-5 py-3.5 text-sm font-semibold text-primary-foreground transition-all hover:scale-[1.01] disabled:opacity-60"
         style={{ background: "var(--gradient-purple)", boxShadow: "var(--shadow-glow-sm)" }}
       >
-        <span className="relative z-10">{loading ? "Submitting…" : "Register for the session"}</span>
+          <span className="relative z-10">{loading ? "Submitting…" : "Next"}</span>
       </button>
-      <p className="mt-3 text-center text-[11px] text-muted-foreground">
-        You'll be auto-admitted on this page once approved.
-      </p>
+        <p className="mt-3 text-center text-[11px] text-muted-foreground">We only collect your name and email.</p>
     </motion.form>
   );
 }
